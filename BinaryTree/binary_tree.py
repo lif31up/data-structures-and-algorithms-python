@@ -1,8 +1,9 @@
 from Node import Node
 
+
 class BinaryTree:
   size: int
-  root: Node = None
+  root: Node
   match = None
   destroy = None
 
@@ -21,7 +22,7 @@ class BinaryTree:
     return 0
 
   def ins_right(self, node, data) -> int:
-    new_node = Node(data)
+    new_nnode = Node(data)
     node.right = new_node
     self.size += 1
     return 0
@@ -35,6 +36,7 @@ class BinaryTree:
       node.left = None
       self.size -= 1
       return 0
+    # if
 
     return 1
 
@@ -47,6 +49,25 @@ class BinaryTree:
       node.right = None
       self.size -= 1
       return 0
+    # if
 
     return 1
+
+  def search(self, key: int, node: Node, result: Node | None):
+    if key is node.key:
+      result = node
+      return 0
+    if node is None:
+      result = None
+      return 1
+    else:
+      self.search(node.left)
+      self.search(node.right)
+
+    return 1
+
+  def search_by_key(self, key):
+    result: Node = None
+    self.search(key, self.root, result)
+    return result
 # BinaryTree
