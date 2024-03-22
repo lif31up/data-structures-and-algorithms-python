@@ -1,10 +1,13 @@
-from LinkedList import linked_list
+from LinkedList.linked_list import LinkedList
+import typing as tp
 
-class Stack(LinkedList):
+class Stack:
   list: LinkedList
   max_length: int
+  destroy: tp.Callable
+  match: tp.Callable
 
-  def __init__(self, match, destroy, max_length):
+  def __init__(self, match: tp.Callable, destroy: tp.Callable, max_length: int):
     self.list = LinkedList(match, destroy)
     self.max_length = max_length
 
@@ -15,10 +18,10 @@ class Stack(LinkedList):
 
   def push(self, data) -> int:
     if self.isFull(): print("stack is full.")
-    if self.list.insNext(None, data): return 0
+    if self.list.ins_next(None, data): return 0
 
   def pop(self):
     if self.isEmpty(): print("stack is empty.")
-    penultimate = self.list.getPenultiamte()
-    return self.list.remNext(penultimate)
+    penultimate = self.list.get_penultimate()
+    return self.list.rem_next(penultimate)
 # Stack

@@ -1,13 +1,13 @@
 from Node import Node
-
+import typing as tp
 
 class BinaryTree:
   size: int
   root: Node
-  match = None
-  destroy = None
+  match = tp.Callable
+  destroy: tp.Callable
 
-  def __init__(self, match, destroy):
+  def __init__(self, match: tp.Callable, destroy: tp.Callable):
     self.size = 0
     self.match = match
     self.destroy = destroy

@@ -1,14 +1,17 @@
 from Node import Node
+import typing as tp
 
 class LinkedList:
   size = 0
   head, tail = None, None
+  match: tp.Callable
+  destroy: tp.Callable
 
-  def __init__(self, match, destroy):
+  def __init__(self, match: tp.Callable, destroy: tp.Callable):
     self.match = match
     self.destroy = destroy
 
-  def ins_next(self, node: Node, data) -> int:
+  def ins_next(self, node: Node | None, data: object) -> int:
     new_node = Node(data)
     if self.size == 0 and node is None: self.head = new_node
     new_node.next = node.next
@@ -16,7 +19,7 @@ class LinkedList:
     self.size += 1
     return 0
 
-  def rem_next(self, node: Node) -> Node and None:
+  def rem_next(self, node: Node | None) -> Node and None:
     if self.size == 0: return None
     if node == None:
       old_node = self.head
@@ -32,7 +35,7 @@ class LinkedList:
       self.size -= 1
       return self.destroy(old_node)
 
-  def getPenultimate(self) -> Node:
+  def get_penultimate(self) -> Node:
     curr = self.head
     while curr.next is not None: curr = curr.next
     return curr
