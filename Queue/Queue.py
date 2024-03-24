@@ -2,8 +2,7 @@ from LinkedList.linked_list import LinkedList
 import typing as tp
 
 class Queue:
-  max_length: int
-  list: LinkedList
+  max_length: int; list: LinkedList;
 
   def __init__(self, match: tp.Callable, destroy: tp.Callable, max_length: int):
     self.list = LinkedList(match, destroy)

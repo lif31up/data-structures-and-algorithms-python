@@ -2,10 +2,8 @@ from LinkedList.linked_list import LinkedList
 import typing as tp
 
 class Stack:
-  list: LinkedList
-  max_length: int
-  destroy: tp.Callable
-  match: tp.Callable
+  list: LinkedList; max_length: int;
+  destroy: tp.Callable; match: tp.Callable;
 
   def __init__(self, match: tp.Callable, destroy: tp.Callable, max_length: int):
     self.list = LinkedList(match, destroy)

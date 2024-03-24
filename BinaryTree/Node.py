@@ -4,3 +4,4 @@ class Node:
   left, right = None, None
 
   def __init__(self, data): self.data = data
+# Node
