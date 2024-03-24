@@ -2,10 +2,8 @@ from Node import Node
 import typing as tp
 
 class BinaryTree:
-  size: int
-  root: Node
-  match = tp.Callable
-  destroy: tp.Callable
+  size: int; root: Node; dict = dict();
+  match = tp.Callable; destroy: tp.Callable;
 
   def __init__(self, match: tp.Callable, destroy: tp.Callable):
     self.size = 0
@@ -59,8 +57,8 @@ class BinaryTree:
 
       def __init__(self):
         self.success: bool = False
-
     # Result
+
     def search(key_value: int, curr_node: Node, result_node: Result) -> int:
       if key_value is curr_node.key:
         result_node.success = True
