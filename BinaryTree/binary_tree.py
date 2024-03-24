@@ -3,11 +3,10 @@ import typing as tp
 
 class BinaryTree:
   size: int; root: Node; dict = dict();
-  match = tp.Callable; destroy: tp.Callable;
+  destroy: tp.Callable;
 
-  def __init__(self, match: tp.Callable, destroy: tp.Callable):
+  def __init__(self, destroy: tp.Callable):
     self.size = 0
-    self.match = match
     self.destroy = destroy
 
   def isEmpty(self) -> bool:
