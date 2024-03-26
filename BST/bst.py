@@ -2,22 +2,10 @@ from BinaryTree.Node import Node
 from BinaryTree.binary_tree import BinaryTree
 import typing as tp
 
-
-def match(key1, key2) -> int:
-  if key1 is key2:
-    return 0
-  elif key1 > key2:
-    return 1
-  elif key1 < key2:
-    return -1
-
-
-# match
-
 class BST(BinaryTree):
   match: tp.Callable
 
-  def __init__(self, match: tp.Callable, destroy: tp.Callable):
+  def __init__(self, match:tp.Callable, destroy:tp.Callable):
     self.match = match
     super().__init__(destroy)
 
