@@ -1,15 +1,29 @@
 from Node import Node
 import typing as tp
 
+
 class LinkedList:
   size = 0
   head, tail = None, None
   match: tp.Callable
   destroy: tp.Callable
+  iterator: Node
 
   def __init__(self, match: tp.Callable, destroy: tp.Callable):
     self.match = match
     self.destroy = destroy
+
+  def __iter__(self):
+    self.iterator = self.head
+    return self.head
+
+  def __next__(self) -> object:
+    if self.iterator is None:
+      raise StopIteration
+    else:
+      data: object = self.iterator.data
+      self.iterator = self.iterator.next
+      return data
 
   def ins_next(self, node: Node | None, data: object) -> int:
     new_node = Node(data)
