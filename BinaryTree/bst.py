@@ -1,4 +1,4 @@
-from BinaryTree.Node import Node
+from BinaryTree.bst_node import BSTNode
 from BinaryTree.binary_tree import BinaryTree
 import typing as tp
 
@@ -13,11 +13,11 @@ class BST(BinaryTree):
 
   def bst_search(self, key) -> list:
     class Result:
-      node: Node
+      node: BSTNode
       loc: int
       def __init__(self): self.success: bool = False
 
-    def search(_key: int, curr_node: Node, result_handler: Result):
+    def search(_key: int, curr_node: BSTNode, result_handler: Result):
       result = self.match(_key, curr_node.key)
       if result is 0:
         result_handler.loc = 0
@@ -41,10 +41,10 @@ class BST(BinaryTree):
   def insert(self, key, data):
     [target, loc] = self.bst_search(key)
     if loc is -1:
-      target.left = Node(data)
+      target.left = BSTNode(data)
       target.left.key = key
     elif loc is 1:
-      target.right = Node(data)
+      target.right = BSTNode(data)
       target.right = key
     else: return 1
     return 0

@@ -1,5 +1,5 @@
 from LinkedList.linked_list import LinkedList
-from LinkedList.Node import Node
+from LinkedList.list_node import ListNode
 import typing as tp
 
 _Set = tp.TypeVar('_Set', bound="Set")
@@ -13,7 +13,7 @@ class Set(LinkedList):
     return 0
 
   def conjoint(self, set: _Set) -> int:
-    prev: Node = None
+    prev: ListNode = None
     for set_element in set:
       for self_element in self:
         prev = self_element
@@ -25,7 +25,7 @@ class Set(LinkedList):
     return 0
 
   def injoin(self, set):
-    prev: Node = None
+    prev: ListNode = None
     for set_element in set:
       for self_element in self:
         prev = self_element

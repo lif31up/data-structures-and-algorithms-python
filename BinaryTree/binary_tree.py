@@ -1,8 +1,8 @@
-from Node import Node
+from bst_node import BSTNode
 import typing as tp
 
 class BinaryTree:
-  size: int; root: Node; dict = dict();
+  size: int; root: BSTNode; dict = dict();
   destroy: tp.Callable;
 
   def __init__(self, destroy: tp.Callable):
@@ -12,19 +12,19 @@ class BinaryTree:
   def isEmpty(self) -> bool:
     return self.root is None
 
-  def ins_left(self, node: Node, data: object) -> int:
-    new_node = Node(data)
+  def ins_left(self, node: BSTNode, data: object) -> int:
+    new_node = BSTNode(data)
     node.left = new_node
     self.size += 1
     return 0
 
-  def ins_right(self, node: Node, data: object) -> int:
-    new_node = Node(data)
+  def ins_right(self, node: BSTNode, data: object) -> int:
+    new_node = BSTNode(data)
     node.right = new_node
     self.size += 1
     return 0
 
-  def rem_left(self, node: Node) -> int:
+  def rem_left(self, node: BSTNode) -> int:
     left = node.left
     if left is not None:
       self.rem_left(left)
@@ -37,7 +37,7 @@ class BinaryTree:
 
     return 1
 
-  def rem_right(self, node: Node) -> int:
+  def rem_right(self, node: BSTNode) -> int:
     right = node.right
     if right is not None:
       self.rem_left(right)
@@ -50,15 +50,15 @@ class BinaryTree:
 
     return 1
 
-  def search(self, key: int) -> Node:
+  def search(self, key: int) -> BSTNode:
     class Result:
-      node: Node
+      node: BSTNode
 
       def __init__(self):
         self.success: bool = False
     # Result
 
-    def search(key_value: int, curr_node: Node, result_node: Result) -> int:
+    def search(key_value: int, curr_node: BSTNode, result_node: Result) -> int:
       if key_value is curr_node.key:
         result_node.success = True
         result_node.node = curr_node

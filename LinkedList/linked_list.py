@@ -1,4 +1,4 @@
-from Node import Node
+from list_node import ListNode
 import typing as tp
 
 
@@ -7,7 +7,7 @@ class LinkedList:
   head, tail = None, None
   match: tp.Callable
   destroy: tp.Callable
-  iterator: Node
+  iterator: ListNode
 
   def __init__(self, match: tp.Callable, destroy: tp.Callable):
     self.match = match
@@ -25,15 +25,15 @@ class LinkedList:
       self.iterator = self.iterator.next
       return data
 
-  def ins_next(self, node: Node | None, data: object) -> int:
-    new_node = Node(data)
+  def ins_next(self, node: ListNode | None, data: object) -> int:
+    new_node = ListNode(data)
     if self.size == 0 and node is None: self.head = new_node
     new_node.next = node.next
     node.next = new_node
     self.size += 1
     return 0
 
-  def rem_next(self, node: Node | None) -> Node and None:
+  def rem_next(self, node: ListNode | None) -> ListNode and None:
     if self.size == 0: return None
     if node == None:
       old_node = self.head
@@ -49,7 +49,7 @@ class LinkedList:
       self.size -= 1
       return self.destroy(old_node)
 
-  def get_penultimate(self) -> Node:
+  def get_penultimate(self) -> ListNode:
     curr = self.head
     while curr.next is not None: curr = curr.next
     return curr
