@@ -3,11 +3,16 @@
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
+### 표기
+완성
+~~미완성~~
+`진행중`
+
 ## 자료구조
 * Linked List
 * Set
 * Binary Search Tree
-* ~~AVL Tree~~
+* `AVL Tree`
 * ~~Graph~~
 * ~~Hash Table~~
 ## 알고리즘
